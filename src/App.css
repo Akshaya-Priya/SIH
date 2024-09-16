@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+/* Ensure carousel spans full width and consistent height */
+.carousel, .carousel-inner {
+  width: 100%;
+  margin: 0 auto; /* Center carousel */
+}
+/* Remove any default margin or padding from the navbar */
+.navbar {
+  margin-bottom: 0; /* Remove bottom margin */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Ensure no extra margin or padding around the carousel */
+.carousel-container {
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.carousel-item img {
+  width: 100%;
+  height: 500px; /* Keeps the carousel height consistent */
+  object-fit: cover; /* Avoids image distortion */
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.styled-button {
+  border: 3px solid;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.styled-button:hover {
+  transform: scale(1.05);
+}
+
+/* Specific Button Colors */
+.preamble-button {
+  background-color: #f2df95; /* Light yellow */
+  border-color: #c49b09; /* Dark yellow */
+}
+
+.rights-button {
+  background-color: #83f4b2; /* Light green */
+  border-color: #28a745; /* Dark green */
+}
+
+.principles-button {
+  background-color: #efb2ac; /* Light red */
+  border-color: #c0392b; /* Dark red */
+}
+
+.duties-button {
+  background-color: #c4e4fa; /* Light blue */
+  border-color: #2874a6; /* Dark blue */
+}
+
+.styled-button:focus {
+  outline: none;
+}
+
+/* Translucent button styles for carousel */
+.carousel-btn {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  color: white; /* White text */
+  transition: background-color 0.3s ease, border 0.3s ease;
+  backdrop-filter: blur(10px); /* Adds a subtle blur to create the translucent effect */
+}
+
+/* Hover effect: Make the background more solid on hover */
+.carousel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Slightly more solid */
+  border: 2px solid rgba(255, 255, 255, 0.8); /* Slightly more solid border */
+}
+
+/* Optional rounded button corners */
+.carousel-btn {
+  border-radius: 8px;
+}
+
+.navbar .nav-link {
+  margin-right: 15px;
+}
+
+.navbar .nav-link img {
+  width: 24px;
+  height: 24px;
+}
+
+.navbar .navbar-collapse {
+  justify-content: space-between;
 }
