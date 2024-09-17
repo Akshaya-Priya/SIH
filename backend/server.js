@@ -33,6 +33,37 @@ app.get('/api/questions/:topic', (req, res) => {
   });
 });
 
+// Fetch all map questions
+app.get('/api/map_questions', (req, res) => {
+  const query = 'SELECT * FROM map_questions ORDER BY RAND() LIMIT 3';
+  db.query(query, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Error fetching questions from database' });
+    } else {
+      console.log(results);
+      res.json(results);
+    }
+  });
+});
+
+// Get simplified duties
+app.get('/api/simplified-duties', (req, res) => {
+  const query = 'SELECT * FROM simplified_duties';
+  db.query(query, (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+// Get original duties
+app.get('/api/original-duties', (req, res) => {
+  const query = 'SELECT * FROM original_duties';
+  db.query(query, (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

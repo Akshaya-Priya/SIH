@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
-import '../css/Preamble.css'; // Assuming you have your CSS in this file
+import '../css/Preamble.css';
+import video from '../images/video.mp4';
 
-const Preamble = () => {
+function Preamble() {
   const [modal, setModal] = useState(null);
-  const [language, setLanguage] = useState('english');
+  const [language, setLanguage] = useState('english'); // Track selected language
 
   const openModal = (modalId) => {
-    console.log('Opening modal:', modalId);
     setModal(modalId);
   };
 
   const closeModal = () => {
-    console.log('Closing modal');
     setModal(null);
   };
 
+  // Texts in English and Hindi
   const content = {
     english: {
       heading: ' Preamble of the Constitution of India',
@@ -29,7 +28,7 @@ const Preamble = () => {
       equality: ' EQUALITY ',
       fraternity: ' FRATERNITY,',
       constitution: 'IN OUR CONSTITUENT ASSEMBLY this twenty-sixth day of November, 1949, do HEREBY ADOPT, ENACT AND GIVE TO OURSELVES THIS CONSTITUTION.',
-      
+      button: 'We, the People: An Animated Guide',
     },
     hindi: {
       heading: 'भारत के संविधान की प्रस्तावना',
@@ -43,13 +42,13 @@ const Preamble = () => {
       equality: 'स्थिति और अवसर की समानता;',
       fraternity: 'व्यक्ति की गरिमा और राष्ट्र की एकता और अखंडता को सुनिश्चित करते हुए बंधुत्व;',
       constitution: 'हमारे संविधान सभा में इस छब्बीस नवंबर, १९४९ को हम इस संविधान को अंगीकृत, अधिनियमित और आत्मार्पित करते हैं।',
-      
+      button: 'हम, भारत के लोग: एक एनिमेटेड मार्गदर्शिका',
     },
   };
 
   return (
-    <Container className="mt-5">
-
+    <div className="App">
+      {/* Language Toggle Buttons */}
       <div className="language-switch">
         <button onClick={() => setLanguage('english')}>English</button>
         <button onClick={() => setLanguage('hindi')}>Hindi</button>
@@ -57,24 +56,21 @@ const Preamble = () => {
 
       <div className="preamble-container">
         <h1>{content[language].heading}</h1>
+
         <p>
-          <span>{language === 'english' ? 'WE, THE PEOPLE OF INDIA' : 'हम, भारत के लोग'}</span>, 
-          having solemnly resolved to constitute India into a 
-          <span className="clickable" onClick={() => openModal('sovereign')}>
-            {language === 'english' ? 'SOVEREIGN' : 'सार्वभौमिक'}
-          </span>, 
-          <span className="clickable" onClick={() => openModal('socialist')}>
-            {language === 'english' ? 'SOCIALIST' : 'समाजवादी'}
-          </span>, 
-          <span className="clickable" onClick={() => openModal('secular')}>
-            {language === 'english' ? 'SECULAR' : 'धर्मनिरपेक्ष'}
-          </span>, 
-          <span className="clickable" onClick={() => openModal('democratic')}>
-            {language === 'english' ? 'DEMOCRATIC' : 'लोकतांत्रिक'}
-          </span>, 
-          <span className="clickable" onClick={() => openModal('republic')}>
-            {language === 'english' ? 'REPUBLIC' : 'गणराज्य'}
-          </span>.
+          <span>{language === 'english' ? 'WE, THE PEOPLE OF INDIA' : 'हम, भारत के लोग'}</span>,having solemnly resolved to constitute India into a
+          <span className="clickable" onClick={() => openModal('sovereign')}>{language === 'english' ? 'SOVEREIGN' : 'सार्वभौमिक'}</span>, 
+          <span className="clickable" onClick={() => openModal('socialist')}>{language === 'english' ? 'SOCIALIST' : 'समाजवादी'}</span>, 
+          <span className="clickable" onClick={() => openModal('secular')}>{language === 'english' ? 'SECULAR' : 'धर्मनिरपेक्ष'}</span>, 
+          <span className="clickable" onClick={() => openModal('democratic')}>{language === 'english' ? 'DEMOCRATIC' : 'लोकतांत्रिक'}</span>, 
+          <span className="clickable" onClick={() => openModal('republic')}>{language === 'english' ? 'REPUBLIC' : 'गणराज्य'}</span>,and to secure to all its citizens:
+        </p>
+
+        <p>
+          <span className="clickable" onClick={() => openModal('justice')}>{content[language].justice}</span> social, economic and political;<br />
+          <span  className="clickable" onClick={() => openModal('liberty')}>{content[language].liberty}</span> of thought, expression, belief, faith, and worship;<br />
+          <span className="clickable" onClick={() => openModal('equality')}>{content[language].equality}</span> of status and of opportunity and to promote among them all
+          <span  className="clickable" onClick={() => openModal('fraternity')}>{content[language].fraternity}</span> assuring the dignity of the individual and the unity and integrity of the Nation;
         </p>
 
         <p>{content[language].constitution}</p>
@@ -87,9 +83,17 @@ const Preamble = () => {
       {modal === 'democratic' && <Modal title={language === 'english' ? 'Democratic' : 'लोकतांत्रिक'} content={content[language].democratic} closeModal={closeModal} />}
       {modal === 'republic' && <Modal title={language === 'english' ? 'Republic' : 'गणराज्य'} content={content[language].republic} closeModal={closeModal} />}
 
-    </Container>
+      {/* Video Button */}
+      <div className="btn">
+        <button>
+          <a href={video}>{content[language].button}</a>
+          {/* unncomment above once animation added */}
+          <a>{content[language].button}</a>
+        </button>
+      </div>
+    </div>
   );
-};
+}
 
 function Modal({ title, content, closeModal }) {
   return (
@@ -104,3 +108,4 @@ function Modal({ title, content, closeModal }) {
 }
 
 export default Preamble;
+

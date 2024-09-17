@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Games from './components/Games';
 import Instructions from "./components/Instructions";
 import Result from "./components/Result";
+import MapMyIndiaResult from './components/MapMyIndiaResult';
 
 
 import Quiz from './games/quiz';
@@ -47,7 +48,7 @@ function App() {
           <Route path="/games/map-my-india" element={<MapMyIndia />} />
           <Route path="/games/monopoly" element={<Monopoly />} />
           <Route path="/games/law-and-order-bingo" element={<LawAndOrderBingo />} />
-           
+          <Route path="/mapmyindia/results" element={<MapMyIndiaResult />} />
           <Route path="/games/spin-the-wheel/instructions" element={<Instructions />} />
         </Routes>
       </div>
